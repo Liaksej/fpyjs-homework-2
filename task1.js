@@ -1,18 +1,25 @@
 function findSimpleNumbers(numberOfSimples) {
-  let numbersArray = [2];
-  round: for (
-    let iterable = 3;
-    numbersArray.length < numberOfSimples;
-    iterable++
-  ) {
-    for (let j = 2; j < iterable; j++) {
-      if (j <= Math.sqrt(iterable) && iterable % j === 0) {
-        continue round;
+  let simpleNumbersArray = [];
+  if (numberOfSimples <= 0) {
+  } else if (numberOfSimples > 0) {
+    simpleNumbersArray.push(2);
+    round: for (
+      let number = 3;
+      simpleNumbersArray.length < numberOfSimples;
+      number++
+    ) {
+      for (let item of simpleNumbersArray) {
+        if (item > Math.sqrt(number)) {
+          simpleNumbersArray.push(number);
+          continue round;
+        } else if (number % item === 0) {
+          continue round;
+        }
       }
+      simpleNumbersArray.push(number);
     }
-    numbersArray.push(iterable);
   }
-  return;
+  return simpleNumbersArray;
 }
 
 console.time("findSimpleNumbers");
