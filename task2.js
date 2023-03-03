@@ -89,7 +89,7 @@ function calculateFinalAmountAndSum() {
       listOfGoods.find((element) => element.id === item.good).price *
       item.amount;
   }
-  return [totalAmount, totalSum];
+  return { totalAmount: totalAmount, totalSum: totalSum };
 }
 
 addingToShoppingCart(3, 30);
